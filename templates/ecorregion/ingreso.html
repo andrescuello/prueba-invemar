@@ -1,0 +1,16 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+{% block title %}
+<h1 class="mt-5">Registro de Ecorregión</h1>
+{% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a class="btn btn-danger" href="{% url 'ecorregion:ecorregion_listar' %}">Cancelar</a>
+</form>
+{% endblock %}

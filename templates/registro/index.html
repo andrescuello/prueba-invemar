@@ -1,0 +1,57 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Especie</th>
+            <th scope="col">Familia</th>
+            <th scope="col">Nombre comun</th>
+            <th scope="col">Proyecto</th>
+            <th scope="col">Base de registro</th>
+            <th scope="col">Identificador</th>
+            <th scope="col">Año identificación</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Localidad</th>
+            <th scope="col">Latitud</th>
+            <th scope="col">Longitud</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Fecha de captura</th>
+            <th scope="col">Ecorregión</th>
+        </tr>
+    </thead>
+            <tbody>
+                {% if object_list %}
+				{% for registro in object_list %}
+				<tr>
+					<td>{{registro.especie}}</td>
+                    <td>{{registro.familia}}</td>
+                    <td>{{registro.nombrecomun}}</td>
+                    <td>{{registro.proyecto}}</td>
+                    <td>{{registro.baseregistro}}</td>
+                    <td>{{registro.identificador}}</td>
+                    <td>{{registro.añoidentificacion}}</td>
+                    <td>{{registro.departamento}}</td>
+                    <td>{{registro.municipio}}</td>
+                    <td>{{registro.localidad}}</td>
+                    <td>{{registro.latitud}}</td>
+                    <td>{{registro.longitud}}</td>
+                    <td>{{registro.autor}}</td>
+                    <td>{{registro.fechacaptura}}</td>
+                    <td>{{registro.ecorregion}}</td>
+					
+					<td>
+						<a class="btn btn-secondary" href="{% url 'registro:registro_editar' registro.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'registro:registro_eliminar' registro.id %}">Eliminar</a>
+					</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				<h1>No hay registros</h1>
+				{% endif %}
+            </tbody>
+</table>
+
+{% endblock %}

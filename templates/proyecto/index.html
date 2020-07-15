@@ -1,0 +1,31 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Información</th>
+            
+        </tr>
+    </thead>
+            <tbody>
+                {% if object_list %}
+				{% for proyecto in object_list %}
+				<tr>
+					<td>{{proyecto.nombre}}</td>
+                    <td>{{registro.informacion}}</td>
+					<td>
+						<a class="btn btn-secondary" href="{% url 'proyecto:proyecto_editar' proyecto.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'proyecto:proyecto_eliminar' proyecto.id %}">Eliminar</a>
+					</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				<h1>No hay registros</h1>
+				{% endif %}
+            </tbody>
+</table>
+
+{% endblock %}
