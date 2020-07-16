@@ -46,8 +46,8 @@ class RegistroForm(forms.ModelForm):
 			'especie': forms.TextInput(attrs={'class':'form-control'}),
             'familia': forms.TextInput(attrs={'class':'form-control'}),
             'nombrecomun': forms.TextInput(attrs={'class':'form-control'}),
-            'proyecto': forms.SelectMultiple(attrs={'class':'form-control', 'size':'10'}),
-            'baseregistro': forms.TextInput(attrs={'class':'form-control'}),
+            'proyecto': forms.Select(attrs={'class':'form-control'}),
+            'baseregistro': forms.Textarea(attrs={'class':'form-control'}),
             'identificador': forms.TextInput(attrs={'class':'form-control'}),
             'añoidentificacion': forms.TextInput(attrs={'class':'form-control'}),
             'departamento': forms.TextInput(attrs={'class':'form-control'}),
@@ -57,5 +57,5 @@ class RegistroForm(forms.ModelForm):
             'longitud': forms.TextInput(attrs={'class':'form-control'}),
             'autor': forms.TextInput(attrs={'class':'form-control'}),
             'fechacaptura': forms.DateInput(attrs={'class':'form-control fecha-date'},format='%Y-%m-%d'),
-            'ecorregion': forms.SelectMultiple(attrs={'class':'form-control', 'size':'10'}),
+            'ecorregion': forms.Select(attrs={'class':'form-control'}), 
 		}

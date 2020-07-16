@@ -6,15 +6,16 @@
 <head>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Bare - Start Bootstrap Template</title>
+  <title>Registros biologicos de especies</title>
 
   <!-- Bootstrap core CSS -->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css'%}">
 
 </head>
 
@@ -29,29 +30,44 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <li class="nav-item dropdown">
+            <li class="nav-item active">
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Tablas de registro
+                 Lista de registro
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'proyecto:proyecto_listar' %}">Tabla de proyectos</a>
                   <a class="dropdown-item" href="{% url 'ecorregion:ecorregion_listar' %}">Tablas de Ecorregiones</a>
                 <div class="dropdown-divider"></div>
-              </div>
+                </div>
+                </li>
+                <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            <li class="nav-item active">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Lista de ingresos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'registro:registro_nuevo' %}">Realizar registro</a>
+                  <a class="dropdown-item" href="{% url 'proyecto:proyecto_nuevo' %}">Registrar Proyectos</a>
+                  <a class="dropdown-item" href="{% url 'ecorregion:ecorregion_nuevo' %}">Registra Ecorregión</a>
+                <div class="dropdown-divider"></div>
+                </div>
+                </li>
+                <span class="sr-only">(current)</span>
+                </a>
+              </li>  
+          
+            <li class="nav-item">
+              {% block boton %}
+              {% endblock  %}
             </li>
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'registro:registro_nuevo' %}">Realizar registro</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'proyecto:proyecto_nuevo' %}">Registrar proyectos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'ecorregion:ecorregion_nuevo' %}">Registra ecorregión</a>
-          </li>
+          
+            
+         
+          
         </ul>
       </div>
     </div>
@@ -60,7 +76,7 @@
   <!-- Page Content -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
+      <div class="col-lg-12">
         {% block title %}
         <h1 class="mt-5">Tabla de registros biológicos de especies</h1>
         {% endblock %}
@@ -73,14 +89,13 @@
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/fecha.js'%}"></script>
   <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
-
+  {% block extrajs %}
+  {% endblock %}
 </body>
 
 </html>

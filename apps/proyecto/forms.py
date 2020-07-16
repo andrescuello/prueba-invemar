@@ -10,14 +10,13 @@ class ProyectoForm(forms.ModelForm):
 
 		fields = [
 			'nombre',
-            'informacion',
-            
+            'informacion',   
 		]
 		labels = {
 			'nombre': 'Nombre',
             'informacion': 'Información',
 		}
 		widgets = {
-            'nombre':  forms.TextInput(attrs={'class':'form-control'}),
+            'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'informacion': forms.Textarea(attrs={'class':'form-control'}),
 		}

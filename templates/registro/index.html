@@ -2,16 +2,12 @@
 {% load static %}
 
 {% block content %}
-<table class="table">
+<table class="table table-responsive">
     <thead>
         <tr>
             <th scope="col">Especie</th>
             <th scope="col">Familia</th>
             <th scope="col">Nombre comun</th>
-            <th scope="col">Proyecto</th>
-            <th scope="col">Base de registro</th>
-            <th scope="col">Identificador</th>
-            <th scope="col">Año identificación</th>
             <th scope="col">Departamento</th>
             <th scope="col">Municipio</th>
             <th scope="col">Localidad</th>
@@ -19,7 +15,7 @@
             <th scope="col">Longitud</th>
             <th scope="col">Autor</th>
             <th scope="col">Fecha de captura</th>
-            <th scope="col">Ecorregión</th>
+
         </tr>
     </thead>
             <tbody>
@@ -29,10 +25,6 @@
 					<td>{{registro.especie}}</td>
                     <td>{{registro.familia}}</td>
                     <td>{{registro.nombrecomun}}</td>
-                    <td>{{registro.proyecto}}</td>
-                    <td>{{registro.baseregistro}}</td>
-                    <td>{{registro.identificador}}</td>
-                    <td>{{registro.añoidentificacion}}</td>
                     <td>{{registro.departamento}}</td>
                     <td>{{registro.municipio}}</td>
                     <td>{{registro.localidad}}</td>
@@ -40,11 +32,11 @@
                     <td>{{registro.longitud}}</td>
                     <td>{{registro.autor}}</td>
                     <td>{{registro.fechacaptura}}</td>
-                    <td>{{registro.ecorregion}}</td>
 					
 					<td>
 						<a class="btn btn-secondary" href="{% url 'registro:registro_editar' registro.id %}">Editar</a>
 						<a class="btn btn-danger" href="{% url 'registro:registro_eliminar' registro.id %}">Eliminar</a>
+                        <button onclick="abrir_modal('{% url 'registro:registro_detalle' registro.id %}')" class="btn btn-info">Detalles</button>
 					</td>
 				</tr>
 				{% endfor %}
@@ -53,5 +45,26 @@
 				{% endif %}
             </tbody>
 </table>
+<div class="modal fade" id="detalle" role="dialog">
+
+</div>
 
 {% endblock %}
+
+{% block extrajs %}
+    
+    <script type="text/javascript">
+        var $ = jQuery.noConflict();
+        function abrir_modal(url){
+            $('#detalle').load(url, function (){
+                $(this).modal('show');
+            });
+        }
+    </script>
+{% endblock  %}
+
+{% block boton %}
+    {% if object_list %}
+        <a class="nav-link" href="{% url 'registro:registro_excel' %}">Reporte Excel</a>
+    {% endif %}
+{% endblock  %}
