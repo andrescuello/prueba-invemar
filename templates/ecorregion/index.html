@@ -31,3 +31,10 @@
 </table>
 
 {% endblock %}
+
+
+{% block boton %}
+    {% if object_list %}
+        <a class="nav-link" href="{% url 'ecorregion:ecorregion_excel' %}">Reporte Excel</a>
+    {% endif %}
+{% endblock  %}

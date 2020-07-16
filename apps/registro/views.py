@@ -80,10 +80,9 @@ class ReporteRegistroExcel(TemplateView):
 			ws.cell(row = cont, column = 14).value = reg.autor
 			ws.cell(row = cont, column = 15).value = reg.fechacaptura
 			ws.cell(row = cont, column = 16).value = reg.ecorregion.nombre
+			cont = cont + 1
 
-			cont+=1
-
-			response = HttpResponse(content_type = "application/ms-excel")
-			response['Content-Disposition'] = 'attachment; filename=ReporteEspecies.xlsx'
-			wb.save(response)
-			return response
+		response = HttpResponse(content_type = "application/ms-excel")
+		response['Content-Disposition'] = 'attachment; filename=ReporteEspecies.xlsx'
+		wb.save(response)
+		return response

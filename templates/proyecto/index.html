@@ -32,3 +32,9 @@
 </table>
 
 {% endblock %}
+
+{% block boton %}
+    {% if object_list %}
+        <a class="nav-link" href="{% url 'proyecto:proyecto_excel' %}">Reporte Excel</a>
+    {% endif %}
+{% endblock  %}
